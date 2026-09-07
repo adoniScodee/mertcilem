@@ -1,148 +1,350 @@
-<!doctype html>
+```html
+<!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>ORG MOBİLYA — Modern Lüks Mobilya</title>
-  <meta name="description" content="ORG MOBİLYA — Özel tasarım mobilyalar, yüksek kalite ve premium işçilik." />
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Çilem ❤️</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+    height: 100vh;
+    background: #050008;
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+/* Arka plan */
+.bg {
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(circle at 50% 50%, #5d003d 0%, #17001c 35%, #050008 75%);
+    animation: bgPulse 5s infinite alternate;
+}
+
+@keyframes bgPulse {
+    from { filter: brightness(.8); }
+    to { filter: brightness(1.25); }
+}
+
+/* Yıldızlar */
+.stars {
+    position: fixed;
+    inset: 0;
+    background-image:
+        radial-gradient(white 1px, transparent 1px),
+        radial-gradient(#ffb6e6 1px, transparent 1px);
+    background-size: 70px 70px, 110px 110px;
+    animation: starsMove 15s linear infinite;
+    opacity: .6;
+}
+
+@keyframes starsMove {
+    from { transform: translateY(0); }
+    to { transform: translateY(-100px); }
+}
+
+/* Ana içerik */
+.container {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 5;
+}
+
+.message {
+    opacity: 0;
+    transform: scale(.2);
+    animation: reveal 2s cubic-bezier(.17,.89,.32,1.49) 2s forwards;
+}
+
+@keyframes reveal {
+    0% {
+        opacity: 0;
+        transform: scale(.2) rotate(-8deg);
+    }
+    60% {
+        opacity: 1;
+        transform: scale(1.15) rotate(3deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0);
+    }
+}
+
+.small {
+    font-size: 20px;
+    letter-spacing: 8px;
+    color: #ffc7ec;
+    margin-bottom: 20px;
+    animation: glow 2s infinite alternate;
+}
+
+.name {
+    font-size: clamp(60px, 15vw, 150px);
+    font-weight: 900;
+    letter-spacing: 8px;
+    background: linear-gradient(
+        90deg,
+        #ff69b4,
+        #fff,
+        #ff1493,
+        #ffd1ec,
+        #ff69b4
+    );
+    background-size: 300%;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation:
+        gradient 4s linear infinite,
+        float 3s ease-in-out infinite;
+    text-shadow: 0 0 40px #ff1493;
+}
+
+.love {
+    margin-top: 25px;
+    font-size: clamp(30px, 7vw, 65px);
+    font-weight: bold;
+    color: white;
+    text-shadow:
+        0 0 10px #ff1493,
+        0 0 30px #ff1493,
+        0 0 60px #ff1493;
+    animation: heartbeat 1.2s infinite;
+}
+
+@keyframes gradient {
+    0% { background-position: 0%; }
+    100% { background-position: 300%; }
+}
+
+@keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+@keyframes heartbeat {
+    0%,100% { transform: scale(1); }
+    15% { transform: scale(1.12); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.08); }
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 5px #ff69b4; }
+    to { text-shadow: 0 0 25px #ff1493; }
+}
+
+/* Kalpler */
+.heart {
+    position: fixed;
+    bottom: -50px;
+    font-size: 25px;
+    animation: rise linear forwards;
+    pointer-events: none;
+    z-index: 3;
+}
+
+@keyframes rise {
+    0% {
+        transform: translateY(0) scale(.5) rotate(0deg);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translateY(-110vh)
+            translateX(var(--x))
+            scale(1.4)
+            rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Işık patlaması */
+.flash {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background: white;
+    border-radius: 50%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow:
+        0 0 20px white,
+        0 0 60px #ff69b4,
+        0 0 120px #ff1493;
+    animation: flash 2s ease-out forwards;
+    z-index: 10;
+}
+
+@keyframes flash {
+    0% {
+        width: 10px;
+        height: 10px;
+        opacity: 1;
+    }
+    100% {
+        width: 200vw;
+        height: 200vw;
+        opacity: 0;
+    }
+}
+
+/* Alt yazı */
+.footer {
+    position: fixed;
+    bottom: 25px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: #ffb6df;
+    font-size: 14px;
+    letter-spacing: 3px;
+    opacity: 0;
+    animation: footerIn 2s ease 5s forwards;
+}
+
+@keyframes footerIn {
+    to { opacity: .8; }
+}
+</style>
 </head>
+
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="#" class="brand"><img src="assets/logo-horizontal.svg" alt="ORG MOBİLYA" height="48"></a>
-      <nav class="nav">
-        <a href="#home">Ana Sayfa</a>
-        <a href="#services">Hizmetler</a>
-        <a href="#products">Ürünler</a>
-        <a href="#projects">Projeler</a>
-        <a href="#contact">İletişim</a>
-      </nav>
-      <a class="btn-contact" href="tel:+905551112233">WhatsApp / Ara</a>
+
+<div class="bg"></div>
+<div class="stars"></div>
+
+<div class="flash"></div>
+
+<div class="container">
+    <div class="message">
+        <div class="small">SADECE SENİN İÇİN...</div>
+
+        <div class="name">ÇİLEM</div>
+
+        <div class="love">
+            ❤️ SENİ SEVİYORUM ❤️
+        </div>
     </div>
-  </header>
+</div>
 
-  <main id="home">
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-text">
-          <h1>Her Mobilya <span class="accent">Bir Sanat Eseri</span></h1>
-          <p class="lead">ORG MOBİLYA — modern lüks tasarım, ustalıkla işlenmiş detaylar. Özel ölçü üretim, hızlı teslimat, ve garantili işçilik.</p>
-          <div class="cta-row">
-            <a class="btn-primary" href="#products">Koleksiyona Göz At</a>
-            <a class="btn-ghost" href="#contact">Teklif Al</a>
-          </div>
-          <ul class="features">
-            <li>Özel üretim & tasarım</li>
-            <li>Montaj & teslimat</li>
-            <li>Malzeme garantisi</li>
-          </ul>
-        </div>
-        <div class="hero-media">
-          <img src="assets/hero-1.svg" alt="Modern kanepe" class="media-img">
-        </div>
-      </div>
-    </section>
+<div class="footer">
+    BAZI İSİMLER KALBE YAZILIR... ❤️
+</div>
 
-    <section id="services" class="section">
-      <div class="container">
-        <h2>Hizmetlerimiz</h2>
-        <div class="services-grid">
-          <div class="service-card">
-            <img src="assets/icon-design.svg" alt="" class="icon">
-            <h3>Tasarım & Konsept</h3>
-            <p>Müşteriye özel konsept tasarımlar, 3D görselleştirme ve malzeme seçimi.</p>
-          </div>
-          <div class="service-card">
-            <img src="assets/icon-production.svg" alt="" class="icon">
-            <h3>Özel Üretim</h3>
-            <p>Yüksek kaliteli işçilik; masif, lake, kumaş ve deri seçenekleri.</p>
-          </div>
-          <div class="service-card">
-            <img src="assets/icon-delivery.svg" alt="" class="icon">
-            <h3>Montaj & Teslimat</h3>
-            <p>Uzman ekibimiz tarafından profesyonel teslimat ve yerinde montaj.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+<script>
 
-    <section id="products" class="section dark">
-      <div class="container">
-        <h2>Öne Çıkan Ürünler</h2>
-        <div class="product-grid">
-          <article class="product-card">
-            <img src="assets/product-1.svg" alt="Ürün 1">
-            <h4>Vela Kanepe</h4>
-            <p>Şık hatlar, üstün konfor.</p>
-            <div class="price">6.500 ₺</div>
-          </article>
-          <article class="product-card">
-            <img src="assets/product-2.svg" alt="Ürün 2">
-            <h4>Aura Yemek Masası</h4>
-            <p>Masif ahşap ve modern ayak tasarımı.</p>
-            <div class="price">8.200 ₺</div>
-          </article>
-          <article class="product-card">
-            <img src="assets/product-3.svg" alt="Ürün 3">
-            <h4>Linea TV Ünitesi</h4>
-            <p>Fonksiyonel ve estetik depolama çözümleri.</p>
-            <div class="price">3.300 ₺</div>
-          </article>
-        </div>
-      </div>
-    </section>
+/* Kalp yağmuru */
+function createHeart() {
 
-    <section id="projects" class="section">
-      <div class="container">
-        <h2>Bitmiş Projeler</h2>
-        <p class="muted">Gerçek müşterilerimiz için tasarladığımız ve ürettiğimiz projelerden seçmeler.</p>
-        <div class="projects-grid">
-          <img src="assets/project-1.svg" alt="Proje 1">
-          <img src="assets/project-2.svg" alt="Proje 2">
-          <img src="assets/project-3.svg" alt="Proje 3">
-        </div>
-      </div>
-    </section>
+    const heart = document.createElement("div");
 
-    <section id="testimonials" class="section dark">
-      <div class="container">
-        <h2>Müşteri Yorumları</h2>
-        <div class="testimonials">
-          <blockquote>“Hayatımızdaki en iyi kanepeyi ORG MOBİLYA'dan aldık — işçilik ve teslimat kusursuz.” <cite>— Elif A.</cite></blockquote>
-          <blockquote>“Özel ölçü yemek masası tam istediğimiz gibi geldi. Teşekkürler.” <cite>— Murat K.</cite></blockquote>
-        </div>
-      </div>
-    </section>
+    const hearts = ["❤️","💗","💖","💕","💓","💘","💞"];
 
-    <section id="contact" class="section contact">
-      <div class="container contact-grid">
-        <div class="contact-info">
-          <h2>İletişim</h2>
-          <p>Mağaza: Merkez Mah. Örnek Cad. No:1</p>
-          <p>Telefon / WhatsApp: <a href="tel:+905551112233">+90 555 111 22 33</a></p>
-          <p>E-posta: <a href="mailto:info@orgmobilya.com">info@orgmobilya.com</a></p>
-          <div class="contact-cta">
-            <a class="btn-primary" href="https://wa.me/905551112233" target="_blank">WhatsApp'tan Teklif Al</a>
-          </div>
-        </div>
-        <form class="contact-form" onsubmit="submitContact(event)">
-          <label>Ad Soyad<input type="text" name="name" required></label>
-          <label>Telefon<input type="tel" name="phone"></label>
-          <label>Mesaj<textarea name="message" rows="5" required></textarea></label>
-          <button class="btn-primary" type="submit">Gönder</button>
-        </form>
-      </div>
-    </section>
-  </main>
+    heart.className = "heart";
+    heart.innerHTML =
+        hearts[Math.floor(Math.random() * hearts.length)];
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div>© <span id="year"></span> ORG MOBİLYA — Tüm hakları saklıdır.</div>
-      <div class="socials">Instagram • Facebook • Pinterest</div>
-    </div>
-  </footer>
+    heart.style.left = Math.random() * 100 + "vw";
 
-  <script src="script.js"></script>
+    heart.style.fontSize =
+        (15 + Math.random() * 35) + "px";
+
+    heart.style.animationDuration =
+        (4 + Math.random() * 5) + "s";
+
+    heart.style.setProperty(
+        "--x",
+        (-150 + Math.random() * 300) + "px"
+    );
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 9000);
+}
+
+setInterval(createHeart, 180);
+
+/* İlk anda ekstra kalp patlaması */
+setTimeout(() => {
+
+    for(let i = 0; i < 50; i++) {
+
+        setTimeout(() => {
+            createHeart();
+        }, i * 30);
+
+    }
+
+}, 1800);
+
+
+/* Ekrana tıklayınca kalp patlaması */
+document.addEventListener("click", function(e) {
+
+    for(let i = 0; i < 25; i++) {
+
+        const heart = document.createElement("div");
+
+        heart.innerHTML = "❤️";
+        heart.style.position = "fixed";
+        heart.style.left = e.clientX + "px";
+        heart.style.top = e.clientY + "px";
+        heart.style.fontSize = "25px";
+        heart.style.zIndex = "20";
+        heart.style.pointerEvents = "none";
+
+        document.body.appendChild(heart);
+
+        const angle = Math.random() * Math.PI * 2;
+        const distance = 80 + Math.random() * 200;
+
+        heart.animate([
+            {
+                transform: "translate(-50%,-50%) scale(.3)",
+                opacity: 1
+            },
+            {
+                transform:
+                    `translate(
+                    ${Math.cos(angle)*distance}px,
+                    ${Math.sin(angle)*distance}px
+                    ) scale(1.5)`,
+                opacity: 0
+            }
+        ], {
+            duration: 1200,
+            easing: "cubic-bezier(.17,.67,.83,.67)"
+        });
+
+        setTimeout(() => heart.remove(), 1300);
+    }
+
+});
+
+</script>
+
 </body>
 </html>
+```
